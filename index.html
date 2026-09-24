@@ -12,11 +12,15 @@
 <meta property="og:locale" content="de_DE">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23B09270'/%3E%3Ctext x='16' y='22.5' font-family='Georgia,serif' font-size='18' fill='white' text-anchor='middle'%3EI%3C/text%3E%3C/svg%3E">
 <link rel="preload" as="image" href="img/hero.jpg">
+<link rel="preload" as="font" type="font/woff2" href="fonts/manrope-latin-wght-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/cormorant-garamond-latin-500-normal.woff2" crossorigin>
 <title>Illen Beauty</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* Schriften lokal gehostet (SIL OFL) — keine Verbindung zu Google */
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/cormorant-garamond-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/cormorant-garamond-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/cormorant-garamond-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:200 800;font-display:swap;src:url(fonts/manrope-latin-wght-normal.woff2) format('woff2-variations'),url(fonts/manrope-latin-wght-normal.woff2) format('woff2')}
 /* =========================================================
    ILLEN BEAUTY CENTER — Kosmetikstudio Bremen-Findorff
    Konzept nach Referenz „LUMINA": warmes Beige, Taupe-Gold,
@@ -314,6 +318,38 @@ textarea.inp{min-height:88px;resize:vertical}
 .foot__card .btn{width:100%}
 .foot__bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:34px;padding-top:20px;border-top:1px solid var(--line);font-size:.78rem;color:var(--muted)}
 .foot__bottom nav{display:flex;gap:18px}
+.foot__bottom nav a:hover{color:var(--ink)}
+.q-privacy{margin-top:14px;font-size:.78rem;line-height:1.55;color:var(--muted)}
+.q-privacy a,.map__note a{color:var(--gold-d);text-decoration:underline;text-underline-offset:2px}
+
+/* ---------- Rechtstexte (Impressum / Datenschutz) ---------- */
+.legal{position:fixed;inset:0;z-index:200;background:var(--bg);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;opacity:0;transform:translateY(12px);transition:opacity .28s ease,transform .32s cubic-bezier(.2,.8,.2,1)}
+.legal.on{opacity:1;transform:none}
+.legal[hidden]{display:none}
+.legal__bar{position:sticky;top:0;z-index:2;background:rgba(255,253,250,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.legal__bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+.legal__switch{display:flex;gap:4px;flex-wrap:nowrap}
+.legal__switch a{font-size:.85rem;font-weight:600;padding:8px 14px;border-radius:999px;color:var(--ink-2)}
+.legal__switch a[aria-current="page"]{background:var(--sand);color:var(--ink)}
+.legal__close{display:inline-flex;align-items:center;gap:8px;font:600 .85rem/1 var(--sans);color:var(--ink);background:var(--paper);border:1px solid var(--line-2);border-radius:999px;padding:10px 16px;cursor:pointer;transition:background .2s,border-color .2s}
+.legal__close:hover{background:var(--sand);border-color:var(--gold-l)}
+.legal__close svg{width:16px;height:16px}
+.legal__doc{max-width:760px;margin:0 auto;padding:clamp(36px,6vw,72px) 20px clamp(64px,8vw,110px)}
+.legal__doc h2{font-family:var(--serif);font-weight:500;font-size:clamp(2.2rem,4.6vw,3.2rem);line-height:1.05;margin:0 0 10px;color:var(--ink)}
+.legal__doc .legal__lead{color:var(--muted);font-size:.95rem;margin:0 0 34px}
+.legal__doc h3{font-feature-settings:"lnum" 1;font-variant-numeric:lining-nums;font-family:var(--serif);font-weight:600;font-size:1.45rem;line-height:1.2;margin:38px 0 10px;color:var(--ink)}
+.legal__doc h4{font-size:.95rem;font-weight:700;margin:22px 0 6px;color:var(--ink)}
+.legal__doc p,.legal__doc li{font-size:.95rem;line-height:1.72;color:var(--ink-2)}
+.legal__doc p{margin:0 0 12px}
+.legal__doc ul{margin:0 0 12px;padding-left:1.1em}
+.legal__doc li{margin-bottom:4px}
+.legal__doc a{color:var(--gold-d);text-decoration:underline;text-underline-offset:2px;overflow-wrap:anywhere}
+.legal__doc address{font-style:normal}
+.legal__box{background:var(--sand);border-radius:18px;padding:20px 22px;margin:0 0 12px}
+.legal__box p:last-child{margin-bottom:0}
+.legal__stand{margin-top:40px!important;font-size:.82rem!important;color:var(--muted)!important}
+body.legal-open{overflow:hidden}
+@media (max-width:560px){.legal__bar .wrap{min-height:60px;gap:10px}.legal__switch a{padding:8px 11px;font-size:.82rem}.legal__close{padding:10px 12px}.legal__close span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
 .social{display:flex;gap:8px;margin-top:16px}
 .social a{width:38px;height:38px;border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;color:var(--ink-2);transition:background-color .2s,color .2s}
 .social svg{width:17px;height:17px}
@@ -552,7 +588,7 @@ textarea.inp{min-height:88px;resize:vertical}
   <div class="wrap">
     <div class="sec-head rv">
       <h2>Preisliste</h2>
-      <p>Alle Preise in Euro. Du bist unsicher, was zu dir passt? Wir beraten dich gern persönlich.</p>
+      <p>Alle Preise sind Endpreise in Euro. Du bist unsicher, was zu dir passt? Wir beraten dich gern persönlich.</p>
     </div>
     <div class="tabs" role="tablist" id="tabs" aria-label="Kategorien"></div>
     <div class="plist" id="plist" role="tabpanel"></div>
@@ -612,6 +648,7 @@ textarea.inp{min-height:88px;resize:vertical}
           </div>
           <div class="field" style="margin-bottom:0"><label class="lbl" for="qMsg">Nachricht <span style="font-weight:400;color:var(--muted)">(optional)</span></label><textarea class="inp" id="qMsg" name="msg" placeholder="z. B. gewünschte Zonen, 3D-Wimpern, Fragen …"></textarea></div>
           <div class="err" id="e3"></div>
+          <p class="q-privacy">Deine Angaben werden nicht gespeichert und nicht an unseren Server übertragen — sie werden nur als Nachricht für WhatsApp vorbereitet. Mehr dazu in der <a href="#datenschutz">Datenschutzerklärung</a>.</p>
         </div>
 
         <div class="step-q" data-s="4" hidden>
@@ -643,6 +680,7 @@ textarea.inp{min-height:88px;resize:vertical}
       <h2>So findest du uns</h2>
       <div class="crow"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div><small>Adresse</small>Hemmstraße 233<br>28215 Bremen-Findorff</div></div>
       <div class="crow"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><div><small>Telefon</small><a href="tel:+494214312369">0421 431 23 69</a><br><a href="tel:+4917624672131">0176 246 72 131</a> <span style="color:var(--muted);font-weight:400">(auch WhatsApp)</span></div></div>
+      <div class="crow"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="M4.5 7l7.5 6 7.5-6"/></svg></span><div><small>E-Mail</small><a href="mailto:illenbeautycenter@web.de">illenbeautycenter@web.de</a></div></div>
       <div class="crow"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></span><div><small>Öffnungszeiten</small>Mo–Sa: 10:00–18:00 Uhr<br>Sonntag: geschlossen</div></div>
       <div class="crow"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r=".8" fill="currentColor"/></svg></span><div><small>Instagram</small><a href="https://www.instagram.com/illen_beauty_bremen/" target="_blank" rel="noopener">@illen_beauty_bremen</a></div></div>
       <div class="contact__btns">
@@ -662,7 +700,7 @@ textarea.inp{min-height:88px;resize:vertical}
       <div class="map__ui" id="mapUi">
         <button type="button" class="btn btn--light btn--sm" id="mapLoad">Karte laden</button>
         <a class="btn btn--light btn--sm" href="https://www.google.com/maps/search/?api=1&amp;query=Illen+Beauty+Center+Hemmstra%C3%9Fe+233+Bremen" target="_blank" rel="noopener">In Google Maps öffnen</a>
-        <p class="map__note">Beim Laden der Karte werden Daten an Google übertragen.</p>
+        <p class="map__note">Beim Laden der Karte werden Daten an Google übertragen. <a href="#datenschutz">Mehr erfahren</a></p>
       </div>
     </div>
   </div>
@@ -708,6 +746,7 @@ textarea.inp{min-height:88px;resize:vertical}
           <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Hemmstra%C3%9Fe+233+28215+Bremen" target="_blank" rel="noopener">Hemmstraße 233, 28215 Bremen</a></li>
           <li><a href="tel:+494214312369">0421 431 23 69</a></li>
           <li><a href="tel:+4917624672131">0176 246 72 131</a></li>
+          <li><a href="mailto:illenbeautycenter@web.de">illenbeautycenter@web.de</a></li>
           <li><a href="#kontakt">Mo–Sa 10:00–18:00</a></li>
         </ul>
       </div>
@@ -719,10 +758,96 @@ textarea.inp{min-height:88px;resize:vertical}
     </div>
     <div class="foot__bottom">
       <span>© 2026 Illen Beauty Center. Alle Rechte vorbehalten.</span>
-      <nav aria-label="Rechtliches"><a href="#">Impressum</a><a href="#">Datenschutz</a></nav>
+      <nav aria-label="Rechtliches"><a href="#impressum">Impressum</a><a href="#datenschutz">Datenschutz</a></nav>
     </div>
   </div>
 </footer>
+
+<!-- ================= RECHTSTEXTE ================= -->
+<div class="legal" id="legal" role="dialog" aria-modal="true" aria-label="Rechtliche Hinweise" hidden>
+  <div class="legal__bar">
+    <div class="wrap">
+      <nav class="legal__switch" aria-label="Rechtstexte"><a href="#impressum" data-doc-link="impressum">Impressum</a><a href="#datenschutz" data-doc-link="datenschutz">Datenschutz</a></nav>
+      <button type="button" class="legal__close" id="legalClose" aria-label="Zur Website"><span>Zur Website</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+  </div>
+
+  <article class="legal__doc" data-doc="impressum" hidden>
+    <h2>Impressum</h2>
+    <p class="legal__lead">Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG)</p>
+    <div class="legal__box">
+      <address><p><strong>Illen Beauty Center</strong><br>Inhaberin: [Vorname Nachname]<br>Hemmstraße 233<br>28215 Bremen<br>Deutschland</p></address>
+    </div>
+    <h3>Kontakt</h3>
+    <p>Telefon: <a href="tel:+494214312369">0421 431 23 69</a><br>Mobil &amp; WhatsApp: <a href="tel:+4917624672131">0176 246 72 131</a><br>E-Mail: <a href="mailto:illenbeautycenter@web.de">illenbeautycenter@web.de</a></p>
+    <h3>Verbraucherstreitbeilegung</h3>
+    <p>Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+    <h3>Haftung für Links</h3>
+    <p>Diese Website enthält Links zu externen Angeboten Dritter (z. B. Instagram, WhatsApp, Google Maps). Auf deren Inhalte haben wir keinen Einfluss; verantwortlich ist stets der jeweilige Anbieter. Zum Zeitpunkt der Verlinkung waren keine Rechtsverstöße erkennbar. Werden uns solche bekannt, entfernen wir den Link umgehend.</p>
+    <h3>Bildnachweis</h3>
+    <p>Fotos: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>, verwendet gemäß der Unsplash-Lizenz.</p>
+    <p class="legal__stand">Stand: September 2026</p>
+  </article>
+
+  <article class="legal__doc" data-doc="datenschutz" hidden>
+    <h2>Datenschutz&shy;erklärung</h2>
+    <p class="legal__lead">Hier erfährst du, welche Daten beim Besuch dieser Website verarbeitet werden und welche Rechte du hast.</p>
+
+    <h3>1. Verantwortliche</h3>
+    <div class="legal__box"><address><p>Illen Beauty Center<br>Inhaberin: [Vorname Nachname]<br>Hemmstraße 233, 28215 Bremen<br>Telefon: <a href="tel:+494214312369">0421 431 23 69</a><br>E-Mail: <a href="mailto:illenbeautycenter@web.de">illenbeautycenter@web.de</a></p></address></div>
+
+    <h3>2. Das Wichtigste in Kürze</h3>
+    <p>Diese Website setzt keine Cookies, nutzt keine Analyse- oder Tracking-Dienste und speichert keine Eingaben auf einem Server. Personenbezogene Daten werden nur verarbeitet, wenn du die Seite aufrufst (technische Server-Logfiles), uns kontaktierst oder die Google-Karte aktiv lädst.</p>
+
+    <h3>3. Hosting und Server-Logfiles</h3>
+    <p>Die Website wird bei Vercel Inc., 440 N Barranca Avenue #4133, Covina, CA 91723, USA gehostet. Beim Aufruf der Seite werden automatisch technisch notwendige Informationen verarbeitet, die dein Browser übermittelt: IP-Adresse, Datum und Uhrzeit des Zugriffs, aufgerufene Seite bzw. Datei, Referrer-URL, Browsertyp und -version sowie Betriebssystem.</p>
+    <p>Diese Daten sind erforderlich, um die Website sicher und stabil auszuliefern. Rechtsgrundlage ist unser berechtigtes Interesse an einem sicheren und funktionsfähigen Webauftritt (Art. 6 Abs. 1 lit. f DSGVO). Eine Zusammenführung mit anderen Datenquellen findet nicht statt.</p>
+    <p>Vercel ist unter dem EU-US Data Privacy Framework zertifiziert; die Übermittlung in die USA stützt sich auf den Angemessenheitsbeschluss der EU-Kommission (Art. 45 DSGVO). Details: <a href="https://vercel.com/legal/privacy-notice" target="_blank" rel="noopener">Datenschutzhinweise von Vercel</a>.</p>
+
+    <h3>4. Schriftarten</h3>
+    <p>Die verwendeten Schriften sind lokal auf unserem Server eingebunden. Beim Laden der Seite wird keine Verbindung zu Servern von Google oder anderen Schriftanbietern hergestellt.</p>
+
+    <h3>5. Kontakt per Telefon, E-Mail oder WhatsApp</h3>
+    <p>Wenn du uns anrufst, eine E-Mail oder eine WhatsApp-Nachricht schreibst, verarbeiten wir deine Angaben (z. B. Name, Telefonnummer, Nachricht, Terminwunsch), um deine Anfrage zu beantworten und Termine zu vereinbaren. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Anbahnung bzw. Durchführung eines Vertrags) sowie unser berechtigtes Interesse an der Beantwortung von Anfragen (Art. 6 Abs. 1 lit. f DSGVO). Wir löschen die Daten, sobald sie nicht mehr benötigt werden, sofern keine gesetzlichen Aufbewahrungspflichten bestehen.</p>
+    <p>Für WhatsApp ist in der EU die WhatsApp Ireland Limited verantwortlich. WhatsApp verarbeitet dabei auch eigene Daten, z. B. deine Telefonnummer und Metadaten, und kann Daten in die USA übermitteln. Weitere Informationen: <a href="https://www.whatsapp.com/legal/privacy-policy-eea" target="_blank" rel="noopener">Datenschutzrichtlinie von WhatsApp</a>. Wenn du das nicht möchtest, erreichst du uns jederzeit telefonisch oder per E-Mail.</p>
+
+    <h3>6. Terminanfrage auf der Website</h3>
+    <p>Die Angaben, die du im Formular „Termin vereinbaren" machst, werden ausschließlich in deinem Browser verarbeitet und weder gespeichert noch an unseren Server übertragen. Erst wenn du auf „Per WhatsApp senden" tippst, öffnet sich WhatsApp mit einer vorbereiteten Nachricht — ob du sie abschickst, entscheidest du selbst. Für die weitere Verarbeitung gilt Abschnitt 5.</p>
+
+    <h3>7. Google Maps</h3>
+    <p>Zur Anfahrt zeigen wir zunächst nur eine stilisierte Karte. Die interaktive Karte von Google Maps wird erst geladen, wenn du auf „Karte laden" klickst. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Dabei werden u. a. deine IP-Adresse und technische Informationen an Google übertragen; Google kann Cookies setzen und Daten in die USA übermitteln (Google LLC ist unter dem EU-US Data Privacy Framework zertifiziert).</p>
+    <p>Rechtsgrundlage ist deine Einwilligung durch den Klick (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG). Du kannst sie jederzeit widerrufen, indem du die Seite neu lädst — die Karte wird dann nicht mehr angezeigt. Mehr unter <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">Datenschutzerklärung von Google</a>. Die Links „In Google Maps öffnen" und „Route planen" führen dich direkt zu Google; dort gelten die Bestimmungen von Google.</p>
+
+    <h3>8. Links zu Instagram</h3>
+    <p>Wir verlinken auf unser Instagram-Profil. Es handelt sich um einfache Links, nicht um eingebettete Plugins — beim Besuch unserer Website werden keine Daten an Instagram übertragen. Erst wenn du einen Link anklickst, gelten die Datenschutzbestimmungen der Meta Platforms Ireland Limited.</p>
+
+    <h3>9. Cookies und lokale Speicherung</h3>
+    <p>Diese Website setzt selbst keine Cookies und nutzt keinen lokalen Speicher deines Browsers. Deshalb gibt es auch kein Cookie-Banner. Nur wenn du die Google-Karte lädst, kann Google eigene Cookies setzen (siehe Abschnitt 7).</p>
+
+    <h3>10. Deine Rechte</h3>
+    <p>Du hast im Rahmen der gesetzlichen Vorgaben jederzeit das Recht auf:</p>
+    <ul>
+      <li>Auskunft über deine gespeicherten Daten (Art. 15 DSGVO),</li>
+      <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO),</li>
+      <li>Löschung (Art. 17 DSGVO) und Einschränkung der Verarbeitung (Art. 18 DSGVO),</li>
+      <li>Datenübertragbarkeit (Art. 20 DSGVO),</li>
+      <li>Widerruf einer erteilten Einwilligung mit Wirkung für die Zukunft (Art. 7 Abs. 3 DSGVO).</li>
+    </ul>
+    <h4>Widerspruchsrecht</h4>
+    <p>Soweit wir Daten auf Grundlage berechtigter Interessen verarbeiten (Art. 6 Abs. 1 lit. f DSGVO), kannst du aus Gründen, die sich aus deiner besonderen Situation ergeben, jederzeit widersprechen (Art. 21 DSGVO).</p>
+    <h4>Beschwerderecht</h4>
+    <p>Du kannst dich bei einer Datenschutz-Aufsichtsbehörde beschweren (Art. 77 DSGVO). Zuständig für uns ist: Der Landesbeauftragte für Datenschutz und Informationsfreiheit der Freien Hansestadt Bremen, Georgstraße 122–124, 27570 Bremerhaven, <a href="mailto:office@datenschutz.bremen.de">office@datenschutz.bremen.de</a>.</p>
+    <p>Für alle Fragen zum Datenschutz und zur Ausübung deiner Rechte genügt eine formlose Nachricht an <a href="mailto:illenbeautycenter@web.de">illenbeautycenter@web.de</a>.</p>
+
+    <h3>11. SSL-/TLS-Verschlüsselung</h3>
+    <p>Diese Website nutzt aus Sicherheitsgründen eine SSL-/TLS-Verschlüsselung. Du erkennst sie am Schloss-Symbol und an „https://" in der Adresszeile deines Browsers.</p>
+
+    <h3>12. Keine automatisierte Entscheidungsfindung</h3>
+    <p>Eine automatisierte Entscheidungsfindung einschließlich Profiling (Art. 22 DSGVO) findet nicht statt.</p>
+
+    <p class="legal__stand">Stand: September 2026</p>
+  </article>
+</div>
 
 <script>
 (function(){
@@ -880,6 +1005,31 @@ next.addEventListener('click',function(){if(!valid(step))return;if(step<4)go(ste
 back.addEventListener('click',function(){if(step>1)go(step-1);});
 $('#quiz').addEventListener('submit',function(e){e.preventDefault();next.click();});
 go(1);
+
+/* ---- Rechtstexte: #impressum / #datenschutz ---- */
+(function(){
+  var L=$('#legal'), docs=$$('[data-doc]',L), lastFocus=null, openDoc=null;
+  function show(name){
+    docs.forEach(function(d){d.hidden=d.getAttribute('data-doc')!==name;});
+    $$('[data-doc-link]',L).forEach(function(a){if(a.getAttribute('data-doc-link')===name)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+    if(!openDoc){lastFocus=document.activeElement;L.hidden=false;document.body.classList.add('legal-open');requestAnimationFrame(function(){L.classList.add('on');});try{menu(false);}catch(e){}}
+    openDoc=name;L.scrollTop=0;
+    var t=docs.filter(function(d){return !d.hidden;})[0];document.title=(name==='impressum'?'Impressum':'Datenschutz')+' — Illen Beauty Center';
+    setTimeout(function(){$('#legalClose').focus({preventScroll:true});},30);
+  }
+  function hide(fromHash){
+    if(!openDoc)return;openDoc=null;L.classList.remove('on');document.body.classList.remove('legal-open');document.title='Illen Beauty';
+    setTimeout(function(){if(!openDoc)L.hidden=true;},reduce?0:300);
+    if(!fromHash){try{history.replaceState(null,'',location.pathname+location.search);}catch(e){}}
+    if(lastFocus&&lastFocus.focus)try{lastFocus.focus({preventScroll:true});}catch(e){}
+  }
+  function route(){var h=(location.hash||'').slice(1);if(h==='impressum'||h==='datenschutz')show(h);else hide(true);}
+  document.addEventListener('click',function(e){var a=e.target.closest('a[href="#impressum"],a[href="#datenschutz"]');if(!a)return;e.preventDefault();var n=a.getAttribute('href').slice(1);try{history.pushState(null,'','#'+n);}catch(err){}show(n);});
+  $('#legalClose').addEventListener('click',function(){hide(false);});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&openDoc)hide(false);});
+  addEventListener('hashchange',route);addEventListener('popstate',route);
+  route();
+})();
 })();
 </script>
 </body>
