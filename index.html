@@ -3,18 +3,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Illen Beauty Center — Kosmetikstudio in Bremen-Findorff: Wimpernverlängerung, IPL-Haarentfernung, Permanent Make-up, Gesichtsbehandlungen, Nägel und Massagen. Preise ansehen und Termin anfragen.">
+<meta name="description" content="Kosmetikstudio in Bremen-Findorff: Wimpern, IPL-Haarentfernung, Permanent Make-up, Gesichtsbehandlungen, Nägel &amp; Massagen. Preise ansehen, Termin anfragen.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://www.illenbeauty.de/">
 <meta name="theme-color" content="#F6EFE6">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Illen Beauty Center — Kosmetikstudio Bremen">
-<meta property="og:description" content="Ästhetik deiner schönsten Version. Wimpern, IPL, PMU, Gesicht, Nägel & Massagen in Bremen-Findorff.">
-<meta property="og:image" content="img/hero.jpg">
+<meta property="og:site_name" content="Illen Beauty Center">
+<meta property="og:url" content="https://www.illenbeauty.de/">
+<meta property="og:title" content="Illen Beauty Center — Kosmetikstudio in Bremen-Findorff">
+<meta property="og:description" content="Ästhetik deiner schönsten Version. Wimpern, IPL, PMU, Gesicht, Nägel &amp; Massagen in Bremen-Findorff.">
+<meta property="og:image" content="https://www.illenbeauty.de/img/hero.jpg">
+<meta property="og:image:width" content="1300">
+<meta property="og:image:height" content="1233">
 <meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="geo.region" content="DE-HB">
+<meta name="geo.placename" content="Bremen">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BeautySalon","@id":"https://www.illenbeauty.de/#salon","name":"Illen Beauty Center","url":"https://www.illenbeauty.de/","image":"https://www.illenbeauty.de/img/hero.jpg","description":"Kosmetikstudio in Bremen-Findorff: Wimpernverlängerung, Wimpern- und Augenbrauenlifting, IPL-Haarentfernung, Permanent Make-up, Gesichtsbehandlungen, Maniküre, Pediküre und Massagen.","telephone":"+49 421 4312369","email":"illenbeautycenter@web.de","address":{"@type":"PostalAddress","streetAddress":"Hemmstraße 233","postalCode":"28215","addressLocality":"Bremen","addressRegion":"Bremen","addressCountry":"DE"},"areaServed":{"@type":"City","name":"Bremen"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"10:00","closes":"18:00"}],"priceRange":"€€","currenciesAccepted":"EUR","hasMap":"https://www.google.com/maps/search/?api=1&query=Illen+Beauty+Center+Hemmstra%C3%9Fe+233+Bremen","sameAs":["https://www.instagram.com/illen_beauty_bremen/"]}</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23B09270'/%3E%3Ctext x='16' y='22.5' font-family='Georgia,serif' font-size='18' fill='white' text-anchor='middle'%3EI%3C/text%3E%3C/svg%3E">
 <link rel="preload" as="image" href="img/hero.jpg">
 <link rel="preload" as="font" type="font/woff2" href="fonts/manrope-latin-wght-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/cormorant-garamond-latin-500-normal.woff2" crossorigin>
-<title>Illen Beauty</title>
+<title>Kosmetikstudio Bremen-Findorff | Illen Beauty Center</title>
 <style>
 /* Schriften lokal gehostet (SIL OFL) — keine Verbindung zu Google */
 @font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/cormorant-garamond-latin-400-normal.woff2) format('woff2')}
@@ -1008,7 +1018,7 @@ go(1);
 
 /* ---- Rechtstexte: #impressum / #datenschutz ---- */
 (function(){
-  var L=$('#legal'), docs=$$('[data-doc]',L), lastFocus=null, openDoc=null;
+  var baseTitle=document.title, L=$('#legal'), docs=$$('[data-doc]',L), lastFocus=null, openDoc=null;
   function show(name){
     docs.forEach(function(d){d.hidden=d.getAttribute('data-doc')!==name;});
     $$('[data-doc-link]',L).forEach(function(a){if(a.getAttribute('data-doc-link')===name)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
@@ -1018,7 +1028,7 @@ go(1);
     setTimeout(function(){$('#legalClose').focus({preventScroll:true});},30);
   }
   function hide(fromHash){
-    if(!openDoc)return;openDoc=null;L.classList.remove('on');document.body.classList.remove('legal-open');document.title='Illen Beauty';
+    if(!openDoc)return;openDoc=null;L.classList.remove('on');document.body.classList.remove('legal-open');document.title=baseTitle;
     setTimeout(function(){if(!openDoc)L.hidden=true;},reduce?0:300);
     if(!fromHash){try{history.replaceState(null,'',location.pathname+location.search);}catch(e){}}
     if(lastFocus&&lastFocus.focus)try{lastFocus.focus({preventScroll:true});}catch(e){}
